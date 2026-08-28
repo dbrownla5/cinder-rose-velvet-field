@@ -1,0 +1,23 @@
+{
+  "skill_name": "image-intelligence",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I dropped a photo of a living room. Analyze it at high and low level, file it in the catalog, and draft a real-estate listing block I can paste.",
+      "expected_output": "Dual-layer analysis (palette/exposure/sharpness plus scene/subjects), collection interiors, real-estate workflow with headline, listing paragraph, alt text, and a checklist. No invented sqft or address.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Catalog this product packshot and write ecommerce title, bullets, and alt text from what you can actually see.",
+      "expected_output": "Product collection, low-level palette and aspect, high-level object description, product workflow. No invented brand or SKU.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "This is a crack in a concrete wall from a site visit. File it and give me a punch-list note. Don't tell me the building is failing.",
+      "expected_output": "Field collection, inspection workflow with severity observe/repair/urgent-review, factual finding, checklist for scale/context photos, no legal or structural verdict.",
+      "files": []
+    }
+  ]
+}

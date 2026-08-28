@@ -1,0 +1,23 @@
+{
+  "skill_name": "resell-photo-edit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a backlog of stuff to sell and a pile of photos of me for Instagram. Don't mix them. Resell should go through background removal and enhance; my socials just need a light edit.",
+      "expected_output": "Two lanes. Resell backlog queued for ready-to-post batch (bg-remove + enhance, program TBD, preview grade until locked). Social plates in a minimal-edit task (no cutout, crop notes only). Personal log plates left out of both. No automatic valuation on unedited street plates.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Send the charcoal on-body coat through the resell edit batch so it's ready to post, then recatalog and value it.",
+      "expected_output": "On-body plate is enhance-only; background removal skipped (do not cut the person). Preview grade stamped pending-tbd for a future flat-lay cutout. Ready-to-post then recatalog. Valuation only after recatalog; still pauses for approval. Notes that a flat-lay is still needed.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Throw this coffee still life in my social edit task. Keep it minimal.",
+      "expected_output": "Social lane, social-minimal recipe, light grade, 4:5/1:1/9:16 crop notes, not inventoried, not valued, not background-removed.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "skill_name": "clothing-intake",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just dumped 12 photos from Maya Chen's drop-off — coats, a watch, some label macros. Sort like items, catalog them by item then client, and get them ready for me to pick which lots go to valuation.",
+      "expected_output": "One business batch keyed to Maya Chen (first+last). Photos prepped (sized/rotated). Like-item groups catalogued item then client with pretty names like Brand Style Color · Maya Chen (coat vs watch; labels attached to the coat group). Dual-layer + garment records. Lots sit at ready. No automatic valuation or listing template. No invented brand.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Camera roll is backlogged — birthday dinner, a living room, and two pairs of jeans I need to list. Get personal and business photos into the log so I can catch up.",
+      "expected_output": "Personal ledger for dinner/living room (cataloged, not valued). Business groups for the jeans, ready for operator pass-through. Dual post-log. Valuation only after the jeans are selected. No mixing ledgers in the value queue.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Pass the charcoal coat through to valuation, then approve it at $95 instead of the suggested $110 and give me a Poshmark template.",
+      "expected_output": "select-pass then a full valuation report (brand, size, year, condition, features, vintage, market bands). price-adjust then approve log events, list price 95, template generated only after that stamp, condition-as-observed language, authenticity not claimed, measurementsNeeded if missing.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "This looks high-end — is it fake? Price it like The RealReal.",
+      "expected_output": "Brand only if a label is readable; otherwise unbranded/contemporary/vintage. High-end second pass lists visible tells and leaves authenticity unverified or flagged — never authentic/fake as a fact, never a certificate. Vintage 30+ or unique appearance also gets a deeper pass. Range is an estimate, still pauses for approval. No appraisal language.",
+      "files": []
+    }
+  ]
+}

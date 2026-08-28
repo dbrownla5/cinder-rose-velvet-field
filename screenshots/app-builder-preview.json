@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Lotbook",
+      "hasCanvas": false,
+      "bodyTextLen": 1044,
+      "bodyTextHash": "9d7c77c1c00e80441b84ad2957b615819915a90b7dacb93a6ee2425c3e4311a2",
+      "bodyTextPrefix": "Lotbook SORT · CATALOG · SEND Batch Open Edit 2 Price 1 Send Log",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Lotbook",
+      "hasCanvas": false,
+      "bodyTextLen": 791,
+      "bodyTextHash": "3b542f1ea9589aae83ce126f4ffdf2c7f41b5ac5dbcf966af9f71d0fda34cf7f",
+      "bodyTextPrefix": "Lotbook Add photos CATALOG Batch Add photos first — no labels. H",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
