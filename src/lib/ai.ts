@@ -14,7 +14,17 @@ import type {
   WorkflowResult,
 } from "./types";
 
-const MODEL = "grok-4.5";
+// Gemini's OpenAI-compatible endpoint by default; both are env-overridable so
+// any OpenAI-compatible provider (Groq, OpenRouter, xAI) drops in unchanged.
+const MODEL = process.env.LLM_MODEL?.trim() || "gemini-3.6-flash";
+const LLM_BASE = (
+  process.env.LLM_BASE_URL?.trim() ||
+  "https://generativelanguage.googleapis.com/v1beta/openai"
+).replace(/\/+$/, "");
+
+function getApiKey(): string | null {
+  return (process.env.LLM_API_KEY || process.env.GEMINI_API_KEY)?.trim() || null;
+}
 
 type ChatOk = { ok: true; text: string };
 type ChatErr = { ok: false; error: string };
@@ -47,7 +57,7 @@ async function chatVision(
   };
 
   const send = async (body: Record<string, unknown>) =>
-    fetch("https://api.x.ai/v1/chat/completions", {
+    fetch(`${LLM_BASE}/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -318,7 +328,7 @@ function toWorkflow(raw: Record<string, unknown>, workArea: WorkAreaId): Workflo
 }
 
 export const aiAvailable = createServerFn({ method: "POST" }).handler(async () => ({
-  available: Boolean(process.env.XAI_API_KEY),
+  available: Boolean(getApiKey()),
 }));
 
 export const analyzeImage = createServerFn({ method: "POST" })
@@ -329,7 +339,7 @@ export const analyzeImage = createServerFn({ method: "POST" })
     }): Promise<
       { ok: true; analysis: HighLevelAnalysis; garment?: GarmentRecord } | ChatErr
     > => {
-      const apiKey = process.env.XAI_API_KEY;
+      const apiKey = getApiKey();
       if (!apiKey) return { ok: false, error: "Vision is unavailable in this environment" };
       if (!data.imageDataUrl?.startsWith("data:image/")) {
         return { ok: false, error: "Expected a compressed image" };
@@ -398,7 +408,7 @@ export const runWorkArea = createServerFn({ method: "POST" })
     }) => input,
   )
   .handler(async ({ data }): Promise<{ ok: true; workflow: WorkflowResult } | ChatErr> => {
-    const apiKey = process.env.XAI_API_KEY;
+    const apiKey = getApiKey();
     if (!apiKey) return { ok: false, error: "Workflows are unavailable in this environment" };
 
     const playbooks: Record<WorkAreaId, string> = {
@@ -517,7 +527,7 @@ export const evaluatePrice = createServerFn({ method: "POST" })
     }) => input,
   )
   .handler(async ({ data }): Promise<{ ok: true; price: PriceEval } | ChatErr> => {
-    const apiKey = process.env.XAI_API_KEY;
+    const apiKey = getApiKey();
     if (!apiKey) return { ok: false, error: "Valuation is unavailable in this environment" };
     const result = await chatVision(
       apiKey,
@@ -619,7 +629,7 @@ export const runSecondPass = createServerFn({ method: "POST" })
     async ({
       data,
     }): Promise<{ ok: true; authenticity?: ValuationReport["authenticity"]; deeper?: ValuationReport["deeper"] } | ChatErr> => {
-      const apiKey = process.env.XAI_API_KEY;
+      const apiKey = getApiKey();
       if (!apiKey) return { ok: false, error: "Second pass is unavailable in this environment" };
       const authMode = data.kind === "authenticity";
       const result = await chatVision(
@@ -678,7 +688,7 @@ export const buildListingTemplate = createServerFn({ method: "POST" })
   )
   .handler(
     async ({ data }): Promise<{ ok: true; template: ListingTemplate } | ChatErr> => {
-      const apiKey = process.env.XAI_API_KEY;
+      const apiKey = getApiKey();
       if (!apiKey) return { ok: false, error: "Templates are unavailable in this environment" };
       const result = await chatVision(
         apiKey,

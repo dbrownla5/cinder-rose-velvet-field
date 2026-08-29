@@ -7,7 +7,7 @@ import { n as toast, t as Toaster } from "../_libs/sonner.mjs";
 import { n as clsx, t as cva } from "../_libs/class-variance-authority+clsx.mjs";
 import { t as twMerge } from "../_libs/tailwind-merge.mjs";
 import { n as create, t as persist } from "../_libs/zustand.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-U3xMQkIS.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-D-ffs3hl.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -4962,7 +4962,7 @@ function LayersPanel({ item }) {
 					variant: "outline",
 					onClick: () => void analyze(item.id),
 					disabled: item.analyzing,
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "size-4" }), hl ? "Re-scan with Grok" : "Scan high layer"]
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Search, { className: "size-4" }), hl ? "Re-scan with AI" : "Scan high layer"]
 				}), item.garment?.isGarment && item.ledger === "business" && group ? needsResellEdit(item) ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
 					onClick: () => setView("edit"),
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Aperture, { className: "size-4" }), "Send to ready-to-post batch"]

@@ -1161,7 +1161,7 @@ function LayersPanel({ item }: { item: CatalogItem }) {
       <div className="flex flex-col gap-2">
         <Button variant="outline" onClick={() => void analyze(item.id)} disabled={item.analyzing}>
           <Search className="size-4" />
-          {hl ? "Re-scan with Grok" : "Scan high layer"}
+          {hl ? "Re-scan with AI" : "Scan high layer"}
         </Button>
         {item.garment?.isGarment && item.ledger === "business" && group ? (
           needsResellEdit(item) ? (
