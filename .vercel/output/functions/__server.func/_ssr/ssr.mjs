@@ -87,7 +87,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-nAGtYbhB.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-DElwZEkP.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -109,27 +109,27 @@ async function getStartManifest(matchedRoutes) {
 var manifest = {
 	"015a029929a18376662584d0b4354db890240ce6033ee4eb68f8cff456f68ba0": {
 		functionName: "analyzeImage_createServerFn_handler",
-		importer: () => import("./ai-NcbQIANB.mjs")
+		importer: () => import("./ai-CUGRCdmg.mjs")
 	},
 	"04f5ba1bdb5b5f4d9888382b364e2081ae994c880070db60b21677d61ee35218": {
 		functionName: "buildListingTemplate_createServerFn_handler",
-		importer: () => import("./ai-NcbQIANB.mjs")
+		importer: () => import("./ai-CUGRCdmg.mjs")
 	},
 	"23e188d81ff3d49ae6c2219f8b375d53d04ee666e8f41a11e6b2ab0c8f13f37c": {
 		functionName: "aiAvailable_createServerFn_handler",
-		importer: () => import("./ai-NcbQIANB.mjs")
+		importer: () => import("./ai-CUGRCdmg.mjs")
 	},
 	"2e2fa300a1a42494a450de5012b869adf0107515566e683a653f6005e5859525": {
 		functionName: "runSecondPass_createServerFn_handler",
-		importer: () => import("./ai-NcbQIANB.mjs")
+		importer: () => import("./ai-CUGRCdmg.mjs")
 	},
 	"3ee3ec00493ee0890127353aa03e1e2c02722f756732d0cd0e87e775409d8699": {
 		functionName: "evaluatePrice_createServerFn_handler",
-		importer: () => import("./ai-NcbQIANB.mjs")
+		importer: () => import("./ai-CUGRCdmg.mjs")
 	},
 	"b62114b84c9ba4a152c8bd194d66e1c3234c4b65f8ef1775d0e0083386ba52ed": {
 		functionName: "runWorkArea_createServerFn_handler",
-		importer: () => import("./ai-NcbQIANB.mjs")
+		importer: () => import("./ai-CUGRCdmg.mjs")
 	},
 	"ba62eb02230d1ba2e7ecc67cb87462acea1d3cfa789a26d10b4251962780299d": {
 		functionName: "mintLotCode_createServerFn_handler",
@@ -1415,7 +1415,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-NPqcCkv0.mjs").then((n) => n.t),
+		import("./router-CwE8M9RL.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);

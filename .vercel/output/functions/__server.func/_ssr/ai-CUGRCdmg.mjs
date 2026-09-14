@@ -1,7 +1,11 @@
 import { t as createServerFn } from "./ssr.mjs";
 import { t as createServerRpc } from "./createServerRpc-A6pJPYTF.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/ai-NcbQIANB.js
-var MODEL = "grok-4.5";
+//#region node_modules/.nitro/vite/services/ssr/assets/ai-CUGRCdmg.js
+var MODEL = process.env.LLM_MODEL?.trim() || "gemini-3.6-flash";
+var LLM_BASE = (process.env.LLM_BASE_URL?.trim() || "https://generativelanguage.googleapis.com/v1beta/openai").replace(/\/+$/, "");
+function getApiKey() {
+	return (process.env.LLM_API_KEY || process.env.GEMINI_API_KEY)?.trim() || null;
+}
 async function chatVision(apiKey, imageDataUrl, system, userText, maxTokens) {
 	const userContent = [];
 	if (imageDataUrl) userContent.push({
@@ -28,7 +32,7 @@ async function chatVision(apiKey, imageDataUrl, system, userText, maxTokens) {
 			content: userContent
 		}]
 	};
-	const send = async (body) => fetch("https://api.x.ai/v1/chat/completions", {
+	const send = async (body) => fetch(`${LLM_BASE}/chat/completions`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -258,14 +262,14 @@ var aiAvailable_createServerFn_handler = createServerRpc({
 	name: "aiAvailable",
 	filename: "src/lib/ai.ts"
 }, (opts) => aiAvailable.__executeServer(opts));
-var aiAvailable = createServerFn({ method: "POST" }).handler(aiAvailable_createServerFn_handler, async () => ({ available: Boolean(process.env.XAI_API_KEY) }));
+var aiAvailable = createServerFn({ method: "POST" }).handler(aiAvailable_createServerFn_handler, async () => ({ available: Boolean(getApiKey()) }));
 var analyzeImage_createServerFn_handler = createServerRpc({
 	id: "015a029929a18376662584d0b4354db890240ce6033ee4eb68f8cff456f68ba0",
 	name: "analyzeImage",
 	filename: "src/lib/ai.ts"
 }, (opts) => analyzeImage.__executeServer(opts));
 var analyzeImage = createServerFn({ method: "POST" }).validator((input) => input).handler(analyzeImage_createServerFn_handler, async ({ data }) => {
-	const apiKey = process.env.XAI_API_KEY;
+	const apiKey = getApiKey();
 	if (!apiKey) return {
 		ok: false,
 		error: "Vision is unavailable in this environment"
@@ -331,7 +335,7 @@ var runWorkArea_createServerFn_handler = createServerRpc({
 	filename: "src/lib/ai.ts"
 }, (opts) => runWorkArea.__executeServer(opts));
 var runWorkArea = createServerFn({ method: "POST" }).validator((input) => input).handler(runWorkArea_createServerFn_handler, async ({ data }) => {
-	const apiKey = process.env.XAI_API_KEY;
+	const apiKey = getApiKey();
 	if (!apiKey) return {
 		ok: false,
 		error: "Workflows are unavailable in this environment"
@@ -437,7 +441,7 @@ var evaluatePrice_createServerFn_handler = createServerRpc({
 	filename: "src/lib/ai.ts"
 }, (opts) => evaluatePrice.__executeServer(opts));
 var evaluatePrice = createServerFn({ method: "POST" }).validator((input) => input).handler(evaluatePrice_createServerFn_handler, async ({ data }) => {
-	const apiKey = process.env.XAI_API_KEY;
+	const apiKey = getApiKey();
 	if (!apiKey) return {
 		ok: false,
 		error: "Valuation is unavailable in this environment"
@@ -530,7 +534,7 @@ var runSecondPass_createServerFn_handler = createServerRpc({
 	filename: "src/lib/ai.ts"
 }, (opts) => runSecondPass.__executeServer(opts));
 var runSecondPass = createServerFn({ method: "POST" }).validator((input) => input).handler(runSecondPass_createServerFn_handler, async ({ data }) => {
-	const apiKey = process.env.XAI_API_KEY;
+	const apiKey = getApiKey();
 	if (!apiKey) return {
 		ok: false,
 		error: "Second pass is unavailable in this environment"
@@ -578,7 +582,7 @@ var buildListingTemplate_createServerFn_handler = createServerRpc({
 	filename: "src/lib/ai.ts"
 }, (opts) => buildListingTemplate.__executeServer(opts));
 var buildListingTemplate = createServerFn({ method: "POST" }).validator((input) => input).handler(buildListingTemplate_createServerFn_handler, async ({ data }) => {
-	const apiKey = process.env.XAI_API_KEY;
+	const apiKey = getApiKey();
 	if (!apiKey) return {
 		ok: false,
 		error: "Templates are unavailable in this environment"
